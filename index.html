@@ -109,6 +109,59 @@ a { color: inherit; }
 .stub p { margin: 0; color: var(--silver); font-size: 1rem; }
 .stub .status { align-self: flex-start; font: 500 0.68rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 8px 4px; border: 1px solid var(--gunmetal); color: var(--silver); }
 
+
+/* ---------- shows ---------- */
+.shows { max-width: 1120px; margin-inline: auto; padding: 72px var(--gutter) 24px; display: flex; flex-direction: column; align-items: center; gap: 56px; scroll-margin-top: 72px; }
+.shows-head { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.shows-head .eyebrow { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--chrome); }
+.shows-head h2 { margin: 0; font: 400 clamp(1.8rem, 4.4vw, 2.6rem)/1.1 var(--display); letter-spacing: 0.03em; text-transform: uppercase; }
+
+/* neon sign */
+.sign { --bloom: 1; position: relative; width: 100%; max-width: 860px; }
+.sign::before { content: ""; position: absolute; inset: -14% -8%; z-index: 0; pointer-events: none; opacity: var(--bloom); background: radial-gradient(closest-side, var(--neon-glow), transparent); filter: blur(30px); }
+.sign-board { position: relative; z-index: 1; background: var(--graphite); border: 1px solid var(--graphite-2); padding: clamp(14px, 3vw, 26px); box-shadow: inset 0 0 60px rgba(0,0,0,0.6); }
+.sign-board::before, .sign-board::after { content: ""; position: absolute; top: -34px; width: 2px; height: 34px; background: var(--gunmetal); }
+.sign-board::before { left: 14%; } .sign-board::after { right: 14%; }
+.tube { border: 3px solid var(--neon-red); border-radius: clamp(14px, 3vw, 26px); padding: clamp(22px, 5vw, 44px) clamp(14px, 3vw, 32px) clamp(20px, 4vw, 34px); display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2.4vw, 20px); text-align: center; box-shadow: 0 0 6px var(--neon-red), 0 0 22px var(--neon-glow), inset 0 0 14px var(--neon-glow); }
+.neon-line { margin: 0; font-family: "Tilt Neon", "Brush Script MT", cursive; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--neon-red); }
+.neon-line.big { font-size: clamp(2.7rem, 11vw, 6rem); line-height: 1; }
+.neon-line.mid { font-size: clamp(1.15rem, 4vw, 2.1rem); line-height: 1.15; text-wrap: balance; }
+.nl, .neon-line.mid { text-shadow: 0 0 2px var(--neon-red), 0 0 9px var(--neon-glow), 0 0 26px var(--neon-glow), 0 0 54px var(--neon-glow); }
+.nl { display: inline-block; }
+.nl.dim { color: color-mix(in srgb, var(--neon-red) 38%, var(--neon-off)); text-shadow: 0 0 6px color-mix(in srgb, var(--neon-glow) 55%, transparent); }
+.nl.off { color: var(--neon-off); text-shadow: none; }
+.count { display: flex; align-items: flex-start; justify-content: center; gap: clamp(8px, 2vw, 16px); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.count .u { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 2.6ch; }
+.count b { font: 500 clamp(1.7rem, 6vw, 3rem)/1 var(--mono); letter-spacing: 0.04em; color: var(--chrome-light); font-weight: 500; }
+.count small { font: 500 0.66rem/1 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver); }
+.count .colon { font: 500 clamp(1.7rem, 6vw, 3rem)/1 var(--mono); color: var(--gunmetal); }
+.live-now { font: 500 clamp(0.95rem, 2.6vw, 1.2rem)/1.2 var(--mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--chrome-light); }
+.when { font: 500 0.82rem/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--chrome); }
+
+/* tour-shirt list */
+.tee { width: 100%; max-width: 680px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.tee h3 { margin: 0; font: 400 clamp(1.3rem, 3vw, 1.7rem)/1.1 var(--display); letter-spacing: 0.16em; text-transform: uppercase; padding-left: 0.16em; }
+.tee-list { list-style: none; margin: 0; padding: 0; width: 100%; }
+.tee-row { display: grid; grid-template-columns: 8.2rem minmax(0, 1fr) 6.4rem; gap: 6px 18px; align-items: center; padding-block: 16px; border-top: 1px dotted var(--gunmetal); }
+.tee-row:last-child { border-bottom: 1px dotted var(--gunmetal); }
+.tee-date { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.tee-date b { white-space: nowrap; font: 400 1.6rem/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--platinum); font-weight: 400; }
+.tee-date span { white-space: nowrap; font: 500 0.7rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--chrome); }
+.tee-where { display: flex; flex-direction: column; gap: 4px; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; }
+.tee-where strong { font: 600 1.02rem/1.25 var(--body); color: var(--platinum); }
+.tee-where span { font: 400 0.9rem/1.3 var(--body); color: var(--chrome); }
+.tee-tag { justify-self: end; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.tee-tag em { font: 500 0.66rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; color: var(--silver); border: 1px solid var(--gunmetal); padding: 4px 6px 3px; white-space: nowrap; }
+.tee-tag a { font: 600 0.8rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--deco-gold); text-decoration: none; border-bottom: 1px solid var(--old-brass); padding-bottom: 3px; }
+.tee-tag a:hover { color: var(--bulb-lit); }
+.tee-note { font: 400 0.72rem/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); text-align: center; }
+@media (max-width: 640px) {
+  .tee-row { grid-template-columns: 6.6rem minmax(0, 1fr); }
+  .tee-tag { grid-column: 2; justify-self: start; align-items: flex-start; flex-direction: row; align-items: center; gap: 12px; }
+  .tee-where { text-align: left; }
+  .sign-board::before, .sign-board::after { height: 22px; top: -22px; }
+}
+
 /* ---------- footer ---------- */
 footer { max-width: 1120px; margin-inline: auto; padding: 40px var(--gutter) calc(48px + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
 footer .brand span { font-size: 0.95rem; }
@@ -190,8 +243,37 @@ footer small { color: var(--silver); font-size: 0.9rem; }
     <section class="stub" id="watch"><span class="eyebrow">Next in the build</span><h2>Watch</h2><p>The 8-track video player.</p><span class="status">Not built yet</span></section>
     <section class="stub" id="listen"><span class="eyebrow">Next in the build</span><h2>Listen</h2><p>The audio deck, playing our live shows.</p><span class="status">Not built yet</span></section>
     <section class="stub" id="posters"><span class="eyebrow">Next in the build</span><h2>Posters</h2><p>The flip-through poster rack.</p><span class="status">Not built yet</span></section>
-    <section class="stub" id="shows"><span class="eyebrow">Next in the build</span><h2>Shows</h2><p>The neon next-show sign and the dates.</p><span class="status">Not built yet</span></section>
   </div>
+
+  <section class="shows" id="shows" aria-labelledby="shows-title">
+    <div class="shows-head">
+      <span class="eyebrow">Live in St. Louis and beyond</span>
+      <h2 id="shows-title">Show Dates</h2>
+    </div>
+
+    <div class="sign" id="sign">
+      <div class="sign-board">
+        <div class="tube">
+          <h3 class="neon-line big" id="sign-title" aria-label="Next show"><span aria-hidden="true">NEXT SHOW</span></h3>
+          <p class="neon-line mid" id="sign-what">Dates loading</p>
+          <p class="when" id="sign-when"></p>
+          <div id="sign-count" class="count" role="timer" aria-label="Time until showtime" hidden>
+            <div class="u"><b id="c-d">00</b><small>Days</small></div><span class="colon" aria-hidden="true">:</span>
+            <div class="u"><b id="c-h">00</b><small>Hours</small></div><span class="colon" aria-hidden="true">:</span>
+            <div class="u"><b id="c-m">00</b><small>Min</small></div><span class="colon" aria-hidden="true">:</span>
+            <div class="u"><b id="c-s">00</b><small>Sec</small></div>
+          </div>
+          <p class="live-now" id="sign-live" hidden>On stage now</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tee" id="tee" hidden>
+      <h3>More dates</h3>
+      <ul class="tee-list" id="tee-list"></ul>
+      <p class="tee-note">Sample dates until the calendar is connected · All times Central</p>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -200,6 +282,137 @@ footer small { color: var(--silver); font-size: 0.9rem; }
   <small>St. Louis, Missouri</small>
 </footer>
 <script>
+/* ---------- Show dates ----------
+   SAMPLE DATA. Replace with the calendar feed from n8n. Each show needs an ISO start time with its
+   UTC offset (Central is -05:00 in daylight time and -06:00 in standard time). */
+var SHOWS = [
+  { start: '2026-10-02T20:00:00-05:00', venue: 'The Copper Room',      area: 'Soulard',            city: 'St. Louis, MO', lineup: 'Full band' },
+  { start: '2026-10-16T20:30:00-05:00', venue: 'Maple & Main',         area: '',                   city: 'Maplewood, MO', lineup: 'Full band' },
+  { start: '2026-10-24T19:00:00-05:00', venue: 'Riverbend Winery',     area: '',                   city: 'Augusta, MO',   lineup: 'Trio', url: '#shows' },
+  { start: '2026-11-07T20:00:00-06:00', venue: 'Grove Brewing Co.',    area: 'The Grove',          city: 'St. Louis, MO', lineup: 'Full band' },
+  { start: '2026-11-21T19:30:00-06:00', venue: 'Barrel House',         area: 'Downtown',           city: 'St. Louis, MO', lineup: 'Duo' },
+  { start: '2026-12-05T20:00:00-06:00', venue: 'Club Atmos',           area: 'Central West End',   city: 'St. Louis, MO', lineup: 'Duo' },
+  { start: '2026-12-31T21:00:00-06:00', venue: 'The Copper Room',      area: 'New Year’s Eve', city: 'St. Louis, MO', lineup: 'Full band', url: '#shows' },
+  { start: '2027-01-16T20:00:00-06:00', venue: 'Maple & Main',         area: '',                   city: 'Maplewood, MO', lineup: 'Full band' }
+];
+var SHOW_LENGTH_MS = 4 * 3600 * 1000;   // treated as "on stage now" for this long after start
+var TZ = 'America/Chicago';
+var fmt = {
+  wd:   new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' }),
+  mon:  new Intl.DateTimeFormat('en-US', { timeZone: TZ, month: 'short' }),
+  day:  new Intl.DateTimeFormat('en-US', { timeZone: TZ, day: 'numeric' }),
+  time: new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' })
+};
+function parts(t) { var d = new Date(t); return { wd: fmt.wd.format(d), mon: fmt.mon.format(d), day: fmt.day.format(d), time: fmt.time.format(d) }; }
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+(function shows() {
+  var list = SHOWS.map(function (s) { return Object.assign({ t: Date.parse(s.start) }, s); }).sort(function (a, b) { return a.t - b.t; });
+  var el = {
+    what: document.getElementById('sign-what'), when: document.getElementById('sign-when'),
+    count: document.getElementById('sign-count'), live: document.getElementById('sign-live'),
+    d: document.getElementById('c-d'), h: document.getElementById('c-h'), m: document.getElementById('c-m'), s: document.getElementById('c-s'),
+    tee: document.getElementById('tee'), teeList: document.getElementById('tee-list'), title: document.getElementById('sign-title')
+  };
+  var current = null;
+
+  function upcoming() { var now = Date.now(); return list.filter(function (s) { return s.t + SHOW_LENGTH_MS > now; }); }
+
+  function render() {
+    var up = upcoming(), next = up[0];
+    current = next || null;
+    if (!next) {
+      el.what.textContent = 'New dates coming soon';
+      el.when.textContent = '';
+      el.count.hidden = true; el.live.hidden = true; el.tee.hidden = true;
+      return;
+    }
+    var p = parts(next.t);
+    el.what.textContent = p.wd + ' ' + p.mon + ' ' + p.day + ' · ' + next.venue;
+    el.when.textContent = next.city + ' · ' + p.time + ' CT' + (next.lineup ? ' · ' + next.lineup : '');
+    el.title.setAttribute('aria-label', 'Next show: ' + next.venue + ', ' + p.wd + ' ' + p.mon + ' ' + p.day);
+    var rest = up.slice(1);
+    el.tee.hidden = rest.length === 0;
+    el.teeList.innerHTML = rest.map(function (s) {
+      var q = parts(s.t);
+      var tag = '<em>' + esc(s.lineup || '') + '</em>' + (s.url ? '<a href="' + esc(s.url) + '" rel="noopener">Tickets</a>' : '');
+      return '<li class="tee-row"><div class="tee-date"><b>' + esc(q.mon + ' ' + q.day) + '</b><span>' + esc(q.wd) + ' · ' + esc(q.time) + '</span></div>' +
+             '<div class="tee-where"><strong>' + esc(s.venue) + '</strong><span>' + esc((s.area ? s.area + ' · ' : '') + s.city) + '</span></div>' +
+             '<div class="tee-tag">' + tag + '</div></li>';
+    }).join('');
+    tick();
+  }
+
+  function tick() {
+    if (!current) return;
+    var diff = current.t - Date.now();
+    if (diff <= 0) {
+      if (current.t + SHOW_LENGTH_MS <= Date.now()) { render(); return; }
+      el.count.hidden = true; el.live.hidden = false; return;
+    }
+    el.live.hidden = true; el.count.hidden = false;
+    var sec = Math.floor(diff / 1000);
+    el.d.textContent = pad(Math.floor(sec / 86400));
+    el.h.textContent = pad(Math.floor(sec % 86400 / 3600));
+    el.m.textContent = pad(Math.floor(sec % 3600 / 60));
+    el.s.textContent = pad(sec % 60);
+  }
+
+  render();
+  setInterval(tick, 1000);
+})();
+
+/* ---------- Neon sign: a tube that is failing ----------
+   One or two letters of NEXT SHOW misbehave. Each has its own random schedule: a long quiet spell, then
+   a burst of uneven stutters, sometimes a dip instead of a full cut, sometimes a long dead pause. */
+(function neon() {
+  var title = document.getElementById('sign-title');
+  var sign = document.getElementById('sign');
+  if (!title) return;
+  var text = 'NEXT SHOW';
+  title.innerHTML = '<span aria-hidden="true">' + text.split('').map(function (c) {
+    return c === ' ' ? ' ' : '<span class="nl">' + c + '</span>';
+  }).join('') + '</span>';
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var letters = Array.prototype.slice.call(title.querySelectorAll('.nl'));
+  var pool = letters.slice(), picks = [], n = Math.random() < 0.5 ? 1 : 2;
+  while (picks.length < n) { picks.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]); }
+  var offCount = 0;
+
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function set(l, st) {
+    var was = l.classList.contains('off') || l.classList.contains('dim');
+    l.classList.remove('off', 'dim');
+    if (st) l.classList.add(st);
+    var now = st === 'off' ? 1 : 0;
+    if (!was && now) offCount++; else if (was && !now && offCount > 0) offCount--;
+    sign.style.setProperty('--bloom', offCount ? 0.78 : 1);
+  }
+  function burst(l, done) {
+    var steps = Math.floor(rnd(2, 7)), i = 0;
+    (function step() {
+      if (i >= steps) { set(l, null); return done(); }
+      var st = Math.random() < 0.3 ? 'dim' : 'off';
+      set(l, i % 2 === 0 ? st : null);
+      i++;
+      setTimeout(step, rnd(30, 240));
+    })();
+  }
+  function cycle(l) {
+    setTimeout(function () {
+      burst(l, function () {
+        if (Math.random() < 0.18) {                      // the tube dies for a moment
+          set(l, 'off');
+          setTimeout(function () { set(l, 'dim'); setTimeout(function () { set(l, null); cycle(l); }, rnd(80, 260)); }, rnd(350, 1500));
+        } else cycle(l);
+      });
+    }, rnd(1500, 9000));
+  }
+  picks.forEach(function (l, i) { setTimeout(function () { cycle(l); }, rnd(600, 3500) + i * 1300); });
+})();
+
 /* Marquee bulbs: as many whole bulbs as fit, spread evenly, so no half bulb is clipped at an edge. */
 (function () {
   var rows = document.querySelectorAll('.bulbs');
