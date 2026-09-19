@@ -1,0 +1,51 @@
+/* ---------- shows ---------- */
+.shows { max-width: 1120px; margin-inline: auto; padding: 72px var(--gutter) 24px; display: flex; flex-direction: column; align-items: center; gap: 56px; scroll-margin-top: 72px; }
+.shows-head { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.shows-head .eyebrow { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--chrome); }
+.shows-head h2 { margin: 0; font: 400 clamp(1.8rem, 4.4vw, 2.6rem)/1.1 var(--display); letter-spacing: 0.03em; text-transform: uppercase; }
+
+/* neon sign */
+.sign { --bloom: 1; position: relative; width: 100%; max-width: 860px; }
+.sign::before { content: ""; position: absolute; inset: -14% -8%; z-index: 0; pointer-events: none; opacity: var(--bloom); background: radial-gradient(closest-side, var(--neon-glow), transparent); filter: blur(30px); }
+.sign-board { position: relative; z-index: 1; background: var(--graphite); border: 1px solid var(--graphite-2); padding: clamp(14px, 3vw, 26px); box-shadow: inset 0 0 60px rgba(0,0,0,0.6); }
+.sign-board::before, .sign-board::after { content: ""; position: absolute; top: -34px; width: 2px; height: 34px; background: var(--gunmetal); }
+.sign-board::before { left: 14%; } .sign-board::after { right: 14%; }
+.tube { border: 3px solid var(--neon-red); border-radius: clamp(14px, 3vw, 26px); padding: clamp(22px, 5vw, 44px) clamp(14px, 3vw, 32px) clamp(20px, 4vw, 34px); display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2.4vw, 20px); text-align: center; box-shadow: 0 0 6px var(--neon-red), 0 0 22px var(--neon-glow), inset 0 0 14px var(--neon-glow); }
+.neon-line { margin: 0; font-family: "Tilt Neon", "Brush Script MT", cursive; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--neon-red); }
+.neon-line.big { font-size: clamp(2.7rem, 11vw, 6rem); line-height: 1; }
+.neon-line.mid { font-size: clamp(1.15rem, 4vw, 2.1rem); line-height: 1.15; text-wrap: balance; }
+.nl, .neon-line.mid { text-shadow: 0 0 2px var(--neon-red), 0 0 9px var(--neon-glow), 0 0 26px var(--neon-glow), 0 0 54px var(--neon-glow); }
+.nl { display: inline-block; }
+.nl.dim { color: color-mix(in srgb, var(--neon-red) 38%, var(--neon-off)); text-shadow: 0 0 6px color-mix(in srgb, var(--neon-glow) 55%, transparent); }
+.nl.off { color: var(--neon-off); text-shadow: none; }
+.count { display: flex; align-items: flex-start; justify-content: center; gap: clamp(8px, 2vw, 16px); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.count .u { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 2.6ch; }
+.count b { font: 500 clamp(1.7rem, 6vw, 3rem)/1 var(--mono); letter-spacing: 0.04em; color: var(--chrome-light); font-weight: 500; }
+.count small { font: 500 0.66rem/1 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--silver); }
+.count .colon { font: 500 clamp(1.7rem, 6vw, 3rem)/1 var(--mono); color: var(--gunmetal); }
+.live-now { font: 500 clamp(0.95rem, 2.6vw, 1.2rem)/1.2 var(--mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--chrome-light); }
+.when { font: 500 0.82rem/1.4 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--chrome); }
+
+/* tour-shirt list */
+.tee { width: 100%; max-width: 680px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.tee h3 { margin: 0; font: 400 clamp(1.3rem, 3vw, 1.7rem)/1.1 var(--display); letter-spacing: 0.16em; text-transform: uppercase; padding-left: 0.16em; }
+.tee-list { list-style: none; margin: 0; padding: 0; width: 100%; }
+.tee-row { display: grid; grid-template-columns: 8.2rem minmax(0, 1fr) 6.4rem; gap: 6px 18px; align-items: center; padding-block: 16px; border-top: 1px dotted var(--gunmetal); }
+.tee-row:last-child { border-bottom: 1px dotted var(--gunmetal); }
+.tee-date { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.tee-date b { white-space: nowrap; font: 400 1.6rem/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--platinum); font-weight: 400; }
+.tee-date span { white-space: nowrap; font: 500 0.7rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--chrome); }
+.tee-where { display: flex; flex-direction: column; gap: 4px; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; }
+.tee-where strong { font: 600 1.02rem/1.25 var(--body); color: var(--platinum); }
+.tee-where span { font: 400 0.9rem/1.3 var(--body); color: var(--chrome); }
+.tee-tag { justify-self: end; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.tee-tag em { font: 500 0.66rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; color: var(--silver); border: 1px solid var(--gunmetal); padding: 4px 6px 3px; white-space: nowrap; }
+.tee-tag a { font: 600 0.8rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--deco-gold); text-decoration: none; border-bottom: 1px solid var(--old-brass); padding-bottom: 3px; }
+.tee-tag a:hover { color: var(--bulb-lit); }
+.tee-note { font: 400 0.72rem/1.4 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--silver); text-align: center; }
+@media (max-width: 640px) {
+  .tee-row { grid-template-columns: 6.6rem minmax(0, 1fr); }
+  .tee-tag { grid-column: 2; justify-self: start; align-items: flex-start; flex-direction: row; align-items: center; gap: 12px; }
+  .tee-where { text-align: left; }
+  .sign-board::before, .sign-board::after { height: 22px; top: -22px; }
+}
