@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/deck.css">
 <link rel="stylesheet" href="css/shows.css">
+<link rel="stylesheet" href="css/posters.css">
 </head>
 <body>
 <a class="skip" href="#watch">Skip to content</a>
@@ -120,9 +121,33 @@
     <p class="deck-note">Live recordings streamed from the Internet Archive</p>
   </section>
 
-  <div class="stubs">
-    <section class="stub" id="posters"><span class="eyebrow">Next in the build</span><h2>Posters</h2><p>The flip-through poster rack.</p><span class="status">Not built yet</span></section>
-  </div>
+  <section class="rack-section" id="posters" aria-labelledby="posters-title" hidden>
+    <div class="shows-head">
+      <span class="eyebrow">Fifteen years of nights</span>
+      <h2 id="posters-title">Posters</h2>
+    </div>
+
+    <div class="rack" id="rack">
+      <div class="rack-stage" id="r-stage" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Show posters. Use the left and right arrow keys to flip through, and Enter to enlarge.">
+        <div class="bin">
+          <button class="key" id="r-prev" type="button" aria-label="Previous poster"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-8 7 8 7z"/></svg><span>Back</span></button>
+          <div class="bin-mid">
+            <div class="bin-line"><span class="bin-cap" id="r-cap" aria-live="polite">&nbsp;</span><span class="bin-count" id="r-count">01 / 36</span></div>
+            <input class="rng" id="r-rail" type="range" min="0" max="35" value="0" step="1" aria-label="Choose a poster">
+          </div>
+          <button class="key" id="r-next" type="button" aria-label="Next poster"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l8 7-8 7z"/></svg><span>Next</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="rack-note">Drag, swipe or use the arrow keys · Tap the front poster to enlarge</p>
+
+    <dialog class="zoom" id="r-zoom" aria-label="Enlarged poster">
+      <div class="zoom-inner">
+        <img id="r-zimg" alt="">
+        <div class="zoom-bar"><span id="r-zcap"></span><button type="button" id="r-zclose">Close</button></div>
+      </div>
+    </dialog>
+  </section>
 
   <section class="shows" id="shows" aria-labelledby="shows-title">
     <div class="shows-head">
@@ -162,6 +187,7 @@
 </footer>
 <script src="js/shows.js" defer></script>
 <script src="js/deck.js" defer></script>
+<script src="js/posters.js" defer></script>
 <script src="js/neon.js" defer></script>
 <script src="js/marquee.js" defer></script>
 </body>
