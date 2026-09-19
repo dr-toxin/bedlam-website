@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;500&family=Tilt+Neon&display=swap">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/deck.css">
+<link rel="stylesheet" href="css/eight.css">
 <link rel="stylesheet" href="css/shows.css">
 <link rel="stylesheet" href="css/posters.css">
 </head>
@@ -61,6 +62,7 @@
         <span class="eyebrow">Summer 2026</span>
         <strong>Whitaker Music Festival</strong>
         <span class="where">Missouri Botanical Garden, St. Louis</span>
+        <a class="plaque-link" href="#watch">Watch the set</a>
       </aside>
       <div class="cta-row">
         <a class="btn btn-gold" href="#shows">See the shows</a>
@@ -69,9 +71,35 @@
     </div>
   </section>
 
-  <div class="stubs">
-    <section class="stub" id="watch"><span class="eyebrow">Next in the build</span><h2>Watch</h2><p>The 8-track video player.</p><span class="status">Not built yet</span></section>
-  </div>
+  <section class="deck-section" id="watch" aria-labelledby="watch-title">
+    <div class="shows-head">
+      <span class="eyebrow">Live on video</span>
+      <h2 id="watch-title">Watch</h2>
+    </div>
+
+    <div class="deck eight" id="eight">
+      <div class="plate"><span class="lbl">8-track · Video</span><span class="screws" aria-hidden="true"><i></i><i></i></span></div>
+      <div class="eight-main">
+        <div class="bezel">
+          <div class="screen-frame"><div class="screen" id="e-screen" aria-live="polite"></div></div>
+          <div class="lcd">
+            <span class="lcd-meta" id="e-meta">No cartridge</span>
+            <span class="lcd-title" id="e-title">Pick a track</span>
+            <span class="lcd-show" id="e-sub"></span>
+          </div>
+        </div>
+        <div class="eight-side">
+          <div class="progrow"><span class="eyebrow">Program</span><span class="lamps" id="e-lamps" aria-hidden="true"></span></div>
+          <ul class="cartridges" id="e-list" aria-label="Cartridges"></ul>
+          <div class="keys">
+            <button class="key" id="e-prog" type="button" aria-label="Next program"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg><span>Program</span></button>
+            <button class="key" id="e-eject" type="button" aria-label="Eject the cartridge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l8 9H4zM4 16h16v3H4z"/></svg><span>Eject</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="eight-note">Press Program to move to the next track · Eject to stop</p>
+  </section>
 
   <section class="deck-section" id="listen" aria-labelledby="listen-title">
     <div class="shows-head">
@@ -187,6 +215,7 @@
 </footer>
 <script src="js/shows.js" defer></script>
 <script src="js/deck.js" defer></script>
+<script src="js/eight.js" defer></script>
 <script src="js/posters.js" defer></script>
 <script src="js/neon.js" defer></script>
 <script src="js/marquee.js" defer></script>
