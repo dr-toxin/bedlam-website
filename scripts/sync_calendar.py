@@ -124,6 +124,13 @@ def main():
         shows.append({"start": start.isoformat(), "allDay": all_day, "venue": venue, "city": city,
                       "lineup": lineup, "url": url, "title": title})
     shows.sort(key=lambda s: s["start"])
+    try:  # leave the file alone when nothing changed, so the repo does not fill with empty updates
+        with open(OUT, encoding="utf-8") as f:
+            if json.load(f).get("shows") == shows:
+                print("show dates unchanged")
+                return
+    except (OSError, ValueError):
+        pass
     out = {"updated": now.isoformat(timespec="seconds"), "timezone": "America/Chicago", "shows": shows}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
