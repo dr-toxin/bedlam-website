@@ -1,17 +1,13 @@
 /* ---------- Show dates ----------
-   SAMPLE DATA. Replace with the calendar feed from n8n. Each show needs an ISO start time with its
-   UTC offset (Central is -05:00 in daylight time and -06:00 in standard time). */
-var SHOWS = [
-  { start: '2026-10-02T20:00:00-05:00', venue: 'The Copper Room',      area: 'Soulard',            city: 'St. Louis, MO', lineup: 'Full band' },
-  { start: '2026-10-16T20:30:00-05:00', venue: 'Maple & Main',         area: '',                   city: 'Maplewood, MO', lineup: 'Full band' },
-  { start: '2026-10-24T19:00:00-05:00', venue: 'Riverbend Winery',     area: '',                   city: 'Augusta, MO',   lineup: 'Trio', url: '#shows' },
-  { start: '2026-11-07T20:00:00-06:00', venue: 'Grove Brewing Co.',    area: 'The Grove',          city: 'St. Louis, MO', lineup: 'Full band' },
-  { start: '2026-11-21T19:30:00-06:00', venue: 'Barrel House',         area: 'Downtown',           city: 'St. Louis, MO', lineup: 'Duo' },
-  { start: '2026-12-05T20:00:00-06:00', venue: 'Club Atmos',           area: 'Central West End',   city: 'St. Louis, MO', lineup: 'Duo' },
-  { start: '2026-12-31T21:00:00-06:00', venue: 'The Copper Room',      area: 'New Year’s Eve', city: 'St. Louis, MO', lineup: 'Full band', url: '#shows' },
-  { start: '2027-01-16T20:00:00-06:00', venue: 'Maple & Main',         area: '',                   city: 'Maplewood, MO', lineup: 'Full band' }
+   The list comes from data/shows.json. The workflow .github/workflows/calendar-sync.yml rewrites that file
+   from the band's public Google Calendar every 30 minutes (see scripts/sync_calendar.py for the rules).
+   The raw GitHub copy is tried first because it updates within minutes, without waiting for a site redeploy;
+   the copy served with the site is the fallback. */
+var DATA_URLS = [
+  'https://raw.githubusercontent.com/dr-toxin/bedlam-website/main/data/shows.json',
+  'data/shows.json'
 ];
-var SHOW_LENGTH_MS = 4 * 3600 * 1000;   // treated as "on stage now" for this long after start
+var SHOW_LENGTH_MS = 4 * 3600 * 1000;   // treated as "on stage now" for this long after start (24 hours for all-day events)
 var TZ = 'America/Chicago';
 var fmt = {
   wd:   new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' }),
@@ -23,8 +19,20 @@ function parts(t) { var d = new Date(t); return { wd: fmt.wd.format(d), mon: fmt
 function pad(n) { return (n < 10 ? '0' : '') + n; }
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
+/* try each address in turn; give back the list of shows, or null if none could be read */
+function loadShows(done) {
+  var i = 0, bust = '?t=' + Math.floor(Date.now() / 300000);
+  (function next() {
+    if (i >= DATA_URLS.length) return done(null);
+    var url = DATA_URLS[i++] + bust;
+    fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) { if (!d || !Array.isArray(d.shows)) throw new Error('bad data'); done(d.shows); })
+      .catch(next);
+  })();
+}
+
 (function shows() {
-  var list = SHOWS.map(function (s) { return Object.assign({ t: Date.parse(s.start) }, s); }).sort(function (a, b) { return a.t - b.t; });
+  var list = [];
   var el = {
     what: document.getElementById('sign-what'), when: document.getElementById('sign-when'),
     count: document.getElementById('sign-count'), live: document.getElementById('sign-live'),
@@ -33,7 +41,9 @@ function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&
   };
   var current = null;
 
-  function upcoming() { var now = Date.now(); return list.filter(function (s) { return s.t + SHOW_LENGTH_MS > now; }); }
+  function lengthOf(s) { return s.allDay ? 24 * 3600 * 1000 : SHOW_LENGTH_MS; }
+  function upcoming() { var now = Date.now(); return list.filter(function (s) { return s.t + lengthOf(s) > now; }); }
+  function timeText(s, p) { return s.allDay ? 'All day' : p.time + ' CT'; }
 
   function render() {
     var up = upcoming(), next = up[0];
@@ -46,15 +56,15 @@ function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&
     }
     var p = parts(next.t);
     el.what.textContent = p.wd + ' ' + p.mon + ' ' + p.day + ' · ' + next.venue;
-    el.when.textContent = next.city + ' · ' + p.time + ' CT' + (next.lineup ? ' · ' + next.lineup : '');
+    el.when.textContent = [next.city, timeText(next, p), next.lineup].filter(Boolean).join(' · ');
     el.title.setAttribute('aria-label', 'Next show: ' + next.venue + ', ' + p.wd + ' ' + p.mon + ' ' + p.day);
-    var rest = up.slice(1);
+    var rest = up.slice(1, 13);
     el.tee.hidden = rest.length === 0;
     el.teeList.innerHTML = rest.map(function (s) {
       var q = parts(s.t);
-      var tag = '<em>' + esc(s.lineup || '') + '</em>' + (s.url ? '<a href="' + esc(s.url) + '" rel="noopener">Tickets</a>' : '');
-      return '<li class="tee-row"><div class="tee-date"><b>' + esc(q.mon + ' ' + q.day) + '</b><span>' + esc(q.wd) + ' · ' + esc(q.time) + '</span></div>' +
-             '<div class="tee-where"><strong>' + esc(s.venue) + '</strong><span>' + esc((s.area ? s.area + ' · ' : '') + s.city) + '</span></div>' +
+      var tag = (s.lineup ? '<em>' + esc(s.lineup) + '</em>' : '') + (s.url ? '<a href="' + esc(s.url) + '" rel="noopener" target="_blank">Details</a>' : '');
+      return '<li class="tee-row"><div class="tee-date"><b>' + esc(q.mon + ' ' + q.day) + '</b><span>' + esc(q.wd) + ' · ' + esc(s.allDay ? 'All day' : q.time) + '</span></div>' +
+             '<div class="tee-where"><strong>' + esc(s.venue) + '</strong>' + (s.city ? '<span>' + esc(s.city) + '</span>' : '') + '</div>' +
              '<div class="tee-tag">' + tag + '</div></li>';
     }).join('');
     tick();
@@ -64,7 +74,7 @@ function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&
     if (!current) return;
     var diff = current.t - Date.now();
     if (diff <= 0) {
-      if (current.t + SHOW_LENGTH_MS <= Date.now()) { render(); return; }
+      if (current.t + lengthOf(current) <= Date.now()) { render(); return; }
       el.count.hidden = true; el.live.hidden = false; return;
     }
     el.live.hidden = true; el.count.hidden = false;
@@ -75,6 +85,17 @@ function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&
     el.s.textContent = pad(sec % 60);
   }
 
-  render();
+  function refresh() {
+    loadShows(function (rows) {
+      if (rows === null) { if (!list.length) render(); return; }   // keep what is on screen if a refresh fails
+      list = rows.map(function (s) { return { t: Date.parse(s.start), venue: s.venue || s.title, city: s.city || '', lineup: s.lineup || '', url: s.url || '', allDay: !!s.allDay }; })
+                 .filter(function (s) { return !isNaN(s.t); })
+                 .sort(function (a, b) { return a.t - b.t; });
+      render();
+    });
+  }
+
+  refresh();
   setInterval(tick, 1000);
+  setInterval(refresh, 10 * 60 * 1000);
 })();
