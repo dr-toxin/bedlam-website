@@ -1,0 +1,42 @@
+name: Sync show dates from the band calendar
+
+# Rewrites data/shows.json from the public Google Calendar. The website reads that file.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+  push:
+    paths:
+      - ".github/workflows/calendar-sync.yml"
+      - "scripts/sync_calendar.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: calendar-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install calendar libraries
+        run: pip install icalendar recurring-ical-events
+      - name: Read the calendar
+        run: python scripts/sync_calendar.py
+      - name: Save the list if it changed
+        run: |
+          git config user.name "calendar-sync"
+          git config user.email "calendar-sync@users.noreply.github.com"
+          git add data/shows.json
+          if git diff --staged --quiet; then
+            echo "No changes to show dates."
+          else
+            git commit -m "Update show dates from the band calendar"
+            git push
+          fi
