@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-20T12:07:40-05:00",
+ "updated": "2026-09-20T12:14:57-05:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -82,105 +82,6 @@
    "lineup": "Duo",
    "url": "",
    "title": "Bedlam Duo @Club Atmos"
-  },
-  {
-   "start": "2027-04-03T15:00:00-05:00",
-   "allDay": false,
-   "venue": "Bench Racers",
-   "city": "",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Bench Racers"
-  },
-  {
-   "start": "2027-04-10T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle winery"
-  },
-  {
-   "start": "2027-05-08T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-06-05T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-06-18T18:00:00-05:00",
-   "allDay": false,
-   "venue": "Bench Racers",
-   "city": "",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Bench Racers"
-  },
-  {
-   "start": "2027-06-26T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-07-24T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-08-07T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-08-27T18:00:00-05:00",
-   "allDay": false,
-   "venue": "Bench Racers",
-   "city": "",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Bench Racers"
-  },
-  {
-   "start": "2027-09-11T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
-  },
-  {
-   "start": "2027-10-02T13:00:00-05:00",
-   "allDay": false,
-   "venue": "Montelle Winery",
-   "city": "Augusta, MO",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Montelle Winery"
   }
  ]
 }
