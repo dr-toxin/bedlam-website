@@ -4,7 +4,7 @@
 Run by .github/workflows/calendar-sync.yml every 30 minutes. Needs: icalendar, recurring-ical-events.
 
 How events are read
-- Only upcoming events are kept (plus shows that started in the last 4 hours).
+- Only events in the next LOOKAHEAD_DAYS days are kept (plus shows that started in the last 4 hours).
 - An event is hidden from the website if its title or description contains "private", "rehearsal",
   "[hide]" or "[internal]". To hide any other event, put [hide] in its title.
 - Title patterns like "Bedlam at Flock", "Bedlam duo at Barrel House" and "Bedlam Duo @Club Atmos" give the
@@ -25,7 +25,7 @@ import recurring_ical_events
 ICS_URL = "https://calendar.google.com/calendar/ical/bedlambros%40gmail.com/public/basic.ics"
 OUT = "data/shows.json"
 TZ = ZoneInfo("America/Chicago")
-LOOKAHEAD_DAYS = 400
+LOOKAHEAD_DAYS = 120   # how far ahead shows are listed (about four months); change this number to show more or fewer
 GRACE = timedelta(hours=4)
 HIDE = re.compile(r"private|rehears|\[hide\]|\[internal\]", re.I)
 TITLE = re.compile(r"^\s*(?:the\s+)?bedlam(?:\s+brothers)?\s*(duo|trio|acoustic|full\s+band)?\s*(?:at|@)\s*(.+?)\s*$", re.I)
