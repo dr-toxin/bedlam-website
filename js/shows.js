@@ -19,6 +19,24 @@ function parts(t) { var d = new Date(t); return { wd: fmt.wd.format(d), mon: fmt
 function pad(n) { return (n < 10 ? '0' : '') + n; }
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
+/* Google Maps directions: the street address when we have one, otherwise a search for the venue and its city */
+var PIN = '<svg class="pin" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4zm0 5.5A1.5 1.5 0 1 1 6 2.5a1.5 1.5 0 0 1 0 3z"/></svg>';
+function mapUrl(s) {
+  var q = s.address ? s.venue + ', ' + s.address : s.venue + ', ' + s.city;
+  return 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(q);
+}
+/* venue and city; with a city or address on hand it becomes a link with an address tooltip (hover, focus or tap) */
+function whereHtml(s, i) {
+  if (!s.city && !s.address) return '<div class="tee-where"><strong>' + esc(s.venue) + '</strong></div>';
+  var url = esc(mapUrl(s));
+  return '<div class="tee-where">' +
+    '<a class="venue-link" href="' + url + '" target="_blank" rel="noopener" aria-describedby="tip-' + i + '"><strong>' + esc(s.venue) + '</strong>' +
+    (s.city ? '<span>' + PIN + esc(s.city) + '</span>' : '') + '</a>' +
+    '<div class="map-tip" role="tooltip" id="tip-' + i + '"><span class="lbl">' + (s.address ? 'Address' : 'No street address yet') + '</span>' +
+    '<span class="adr">' + esc(s.address || s.venue + ', ' + s.city) + '</span>' +
+    '<a class="go" href="' + url + '" target="_blank" rel="noopener">Get directions &#8599;</a></div></div>';
+}
+
 /* try each address in turn; give back the list of shows, or null if none could be read */
 function loadShows(done) {
   var i = 0, bust = '?t=' + Math.floor(Date.now() / 300000);
@@ -60,11 +78,11 @@ function loadShows(done) {
     el.title.setAttribute('aria-label', 'Next show: ' + next.venue + ', ' + p.wd + ' ' + p.mon + ' ' + p.day);
     var rest = up.slice(1, 13);
     el.tee.hidden = rest.length === 0;
-    el.teeList.innerHTML = rest.map(function (s) {
+    el.teeList.innerHTML = rest.map(function (s, i) {
       var q = parts(s.t);
       var tag = (s.lineup ? '<em>' + esc(s.lineup) + '</em>' : '') + (s.url ? '<a href="' + esc(s.url) + '" rel="noopener" target="_blank">Details</a>' : '');
       return '<li class="tee-row"><div class="tee-date"><b>' + esc(q.mon + ' ' + q.day) + '</b><span>' + esc(q.wd) + ' · ' + esc(s.allDay ? 'All day' : q.time) + '</span></div>' +
-             '<div class="tee-where"><strong>' + esc(s.venue) + '</strong>' + (s.city ? '<span>' + esc(s.city) + '</span>' : '') + '</div>' +
+             whereHtml(s, i) +
              '<div class="tee-tag">' + tag + '</div></li>';
     }).join('');
     tick();
@@ -88,12 +106,19 @@ function loadShows(done) {
   function refresh() {
     loadShows(function (rows) {
       if (rows === null) { if (!list.length) render(); return; }   // keep what is on screen if a refresh fails
-      list = rows.map(function (s) { return { t: Date.parse(s.start), venue: s.venue || s.title, city: s.city || '', lineup: s.lineup || '', url: s.url || '', allDay: !!s.allDay }; })
+      list = rows.map(function (s) { return { t: Date.parse(s.start), venue: s.venue || s.title, city: s.city || '', address: s.address || '', lineup: s.lineup || '', url: s.url || '', allDay: !!s.allDay }; })
                  .filter(function (s) { return !isNaN(s.t); })
                  .sort(function (a, b) { return a.t - b.t; });
       render();
     });
   }
+
+  /* phones and tablets (no hover): the first tap on a venue opens its address, the link inside goes to Maps */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('.venue-link');
+    Array.prototype.forEach.call(el.teeList.querySelectorAll('.tee-where.open'), function (w) { if (!link || w !== link.parentNode) w.classList.remove('open'); });
+    if (link && window.matchMedia('(hover: none)').matches) { e.preventDefault(); link.parentNode.classList.toggle('open'); }
+  });
 
   refresh();
   setInterval(tick, 1000);

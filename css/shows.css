@@ -49,3 +49,33 @@
   .tee-where { text-align: left; }
   .sign-board::before, .sign-board::after { height: 22px; top: -22px; }
 }
+
+/* venue and city link: address tooltip on hover / focus / tap, click goes to Google Maps directions */
+.tee-where { position: relative; align-items: center; }
+.venue-link { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; cursor: pointer; }
+.venue-link strong { align-self: center; border-bottom: 1px solid transparent; transition: border-color 0.12s, color 0.12s; }
+.venue-link .pin { display: inline-block; width: 0.7em; height: 0.7em; margin-right: 0.45em; vertical-align: -0.05em; color: var(--old-brass); }
+.tee-where.open .venue-link strong { color: var(--bulb-lit); border-bottom-color: var(--old-brass); }
+.map-tip { position: absolute; z-index: 5; left: 50%; top: 100%; transform: translate(-50%, 6px); width: max-content; max-width: 17rem; padding: 12px 14px 11px; text-align: left; text-transform: none; letter-spacing: 0.02em;
+  background: var(--graphite); border: 1px solid var(--old-brass); box-shadow: 0 10px 28px rgba(0,0,0,0.6), 0 0 0 1px #000; opacity: 0; visibility: hidden; transition: opacity 0.14s, visibility 0.14s, transform 0.14s; }
+.map-tip::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }   /* bridge so the pointer can travel from the venue into the tip */
+.map-tip::after { content: ""; position: absolute; left: 50%; top: -6px; width: 10px; height: 10px; background: var(--graphite); border-left: 1px solid var(--old-brass); border-top: 1px solid var(--old-brass); transform: translateX(-50%) rotate(45deg); }
+.map-tip .lbl { display: block; font: 500 0.62rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--silver); margin-bottom: 7px; }
+.map-tip .adr { display: block; font: 400 0.98rem/1.35 var(--body); color: var(--platinum); }
+.map-tip .go { display: inline-block; margin-top: 10px; font: 600 0.78rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--deco-gold); text-decoration: none; border-bottom: 1px solid var(--old-brass); padding-bottom: 3px; }
+.map-tip .go:hover { color: var(--bulb-lit); }
+.tee-where.open .map-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+@media (hover: hover) {   /* mouse and keyboard only, so a tap on a phone cannot leave the tip stuck open */
+  .tee-where:hover .venue-link strong, .tee-where:focus-within .venue-link strong { color: var(--bulb-lit); border-bottom-color: var(--old-brass); }
+  .tee-where:hover .map-tip, .tee-where:focus-within .map-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+}
+@media (max-width: 640px) {
+  .tee-row { position: relative; }
+  .tee-where { position: static; align-items: flex-start; }
+  .venue-link strong { align-self: flex-start; }
+  .map-tip { left: 0; right: 0; top: calc(100% - 4px); width: auto; max-width: none; transform: translateY(6px); }
+  .tee-where.open .map-tip { transform: none; }
+  .map-tip::after { left: calc(6.6rem + 26px); }
+}
+@media (hover: hover) and (max-width: 640px) { .tee-where:hover .map-tip, .tee-where:focus-within .map-tip { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .map-tip, .venue-link strong { transition: none; } }
