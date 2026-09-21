@@ -79,3 +79,16 @@
 }
 @media (hover: hover) and (max-width: 640px) { .tee-where:hover .map-tip, .tee-where:focus-within .map-tip { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .map-tip, .venue-link strong { transition: none; } }
+
+/* the same address panel on the neon sign: venue and city are links, hover / focus / tap opens the panel under the city line */
+.sign-where { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2.4vw, 20px); width: max-content; max-width: 100%; }
+.sign-where .map-tip { left: 50%; right: auto; top: 100%; width: max-content; max-width: min(17rem, 86vw); transform: translate(-50%, 6px); }
+.sign-where .map-tip::after { left: 50%; }
+.sign-link { color: inherit; text-decoration: none; cursor: pointer; border-bottom: 1px solid transparent; transition: border-color 0.12s; }
+.sign-where.open .sign-link { border-bottom-color: color-mix(in srgb, currentColor 55%, transparent); }
+.sign-where.open .map-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+@media (hover: hover) {
+  .sign-where:hover .sign-link, .sign-where:focus-within .sign-link { border-bottom-color: color-mix(in srgb, currentColor 55%, transparent); }
+  .sign-where:hover .map-tip, .sign-where:focus-within .map-tip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+}
+@media (prefers-reduced-motion: reduce) { .sign-link { transition: none; } }

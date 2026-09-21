@@ -25,16 +25,23 @@ function mapUrl(s) {
   var q = s.address ? s.venue + ', ' + s.address : s.venue + ', ' + s.city;
   return 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(q);
 }
+/* the address panel: the address (or the venue and city when there is no street address) and the directions link */
+function tipInner(s) {
+  return '<span class="lbl">' + (s.address ? 'Address' : 'No street address yet') + '</span>' +
+    '<span class="adr">' + esc(s.address || s.venue + ', ' + s.city) + '</span>' +
+    '<a class="go" href="' + esc(mapUrl(s)) + '" target="_blank" rel="noopener">Get directions &#8599;</a>';
+}
 /* venue and city; with a city or address on hand it becomes a link with an address tooltip (hover, focus or tap) */
 function whereHtml(s, i) {
   if (!s.city && !s.address) return '<div class="tee-where"><strong>' + esc(s.venue) + '</strong></div>';
-  var url = esc(mapUrl(s));
   return '<div class="tee-where">' +
-    '<a class="venue-link" href="' + url + '" target="_blank" rel="noopener" aria-describedby="tip-' + i + '"><strong>' + esc(s.venue) + '</strong>' +
+    '<a class="venue-link" href="' + esc(mapUrl(s)) + '" target="_blank" rel="noopener" aria-describedby="tip-' + i + '"><strong>' + esc(s.venue) + '</strong>' +
     (s.city ? '<span>' + PIN + esc(s.city) + '</span>' : '') + '</a>' +
-    '<div class="map-tip" role="tooltip" id="tip-' + i + '"><span class="lbl">' + (s.address ? 'Address' : 'No street address yet') + '</span>' +
-    '<span class="adr">' + esc(s.address || s.venue + ', ' + s.city) + '</span>' +
-    '<a class="go" href="' + url + '" target="_blank" rel="noopener">Get directions &#8599;</a></div></div>';
+    '<div class="map-tip" role="tooltip" id="tip-' + i + '">' + tipInner(s) + '</div></div>';
+}
+/* the same links on the neon sign: the venue in the first line and the city in the second open the panel and go to Maps */
+function signLink(s, text) {
+  return '<a class="sign-link" href="' + esc(mapUrl(s)) + '" target="_blank" rel="noopener" aria-describedby="sign-tip">' + esc(text) + '</a>';
 }
 
 /* try each address in turn; give back the list of shows, or null if none could be read */
@@ -55,7 +62,8 @@ function loadShows(done) {
     what: document.getElementById('sign-what'), when: document.getElementById('sign-when'),
     count: document.getElementById('sign-count'), live: document.getElementById('sign-live'),
     d: document.getElementById('c-d'), h: document.getElementById('c-h'), m: document.getElementById('c-m'), s: document.getElementById('c-s'),
-    tee: document.getElementById('tee'), teeList: document.getElementById('tee-list'), title: document.getElementById('sign-title')
+    tee: document.getElementById('tee'), teeList: document.getElementById('tee-list'), title: document.getElementById('sign-title'),
+    tip: document.getElementById('sign-tip')
   };
   var current = null;
 
@@ -69,12 +77,21 @@ function loadShows(done) {
     if (!next) {
       el.what.textContent = 'New dates coming soon';
       el.when.textContent = '';
+      el.tip.innerHTML = '';
       el.count.hidden = true; el.live.hidden = true; el.tee.hidden = true;
       return;
     }
     var p = parts(next.t);
-    el.what.textContent = p.wd + ' ' + p.mon + ' ' + p.day + ' · ' + next.venue;
-    el.when.textContent = [next.city, timeText(next, p), next.lineup].filter(Boolean).join(' · ');
+    var day = p.wd + ' ' + p.mon + ' ' + p.day + ' · ';
+    if (next.city || next.address) {
+      el.what.innerHTML = esc(day) + signLink(next, next.venue);
+      el.when.innerHTML = [next.city ? signLink(next, next.city) : '', esc(timeText(next, p)), esc(next.lineup)].filter(Boolean).join(' · ');
+      el.tip.innerHTML = tipInner(next);
+    } else {
+      el.what.textContent = day + next.venue;
+      el.when.textContent = [timeText(next, p), next.lineup].filter(Boolean).join(' · ');
+      el.tip.innerHTML = '';
+    }
     el.title.setAttribute('aria-label', 'Next show: ' + next.venue + ', ' + p.wd + ' ' + p.mon + ' ' + p.day);
     var rest = up.slice(1, 13);
     el.tee.hidden = rest.length === 0;
@@ -115,9 +132,10 @@ function loadShows(done) {
 
   /* phones and tablets (no hover): the first tap on a venue opens its address, the link inside goes to Maps */
   document.addEventListener('click', function (e) {
-    var link = e.target.closest && e.target.closest('.venue-link');
-    Array.prototype.forEach.call(el.teeList.querySelectorAll('.tee-where.open'), function (w) { if (!link || w !== link.parentNode) w.classList.remove('open'); });
-    if (link && window.matchMedia('(hover: none)').matches) { e.preventDefault(); link.parentNode.classList.toggle('open'); }
+    var link = e.target.closest && e.target.closest('.venue-link, .sign-link');
+    var box = link && link.closest('.tee-where, .sign-where');
+    Array.prototype.forEach.call(document.querySelectorAll('.tee-where.open, .sign-where.open'), function (w) { if (w !== box) w.classList.remove('open'); });
+    if (box && window.matchMedia('(hover: none)').matches) { e.preventDefault(); box.classList.toggle('open'); }
   });
 
   refresh();
