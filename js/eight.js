@@ -11,6 +11,8 @@ var VIDEOS = [
     page: 'https://app.groove.cm/groovevideo/videopage/309660/qth0u07a0678f245e3d75881a6179fe3cf2ba' },
   { title: 'Rainy Day Women #12 & 35', artist: 'Bob Dylan', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309672', permalink: '8kxdyR3PYXRHh9jItoiW', page: '' },
+  { title: 'Knockin’ On Heaven’s Door', artist: 'Bob Dylan', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
+    gid: '309677', permalink: 'xhiQOZxfrapVjxso536f', page: '' },
   { title: 'Runnin’ Down A Dream', artist: 'Tom Petty', detail: '9 Mile Garden · Aug 22, 2026',
     gid: '309661', permalink: 'iuSS4n0fKJlvUdc6R3u2',
     page: 'https://app.groove.cm/groovevideo/videopage/309661/4pyr76c6ba4adb751ce308c75325f41868cb9' }
