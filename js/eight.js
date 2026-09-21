@@ -4,7 +4,7 @@
    An empty slot is just null. To fill the empty slot, replace null with an object like the others.
    page is optional. whitaker: true marks the video the hero's "Watch the set" link jumps to. */
 var VIDEOS = [
-  { title: 'Live video', artist: '', detail: '',
+  { title: 'Live video', artist: '', detail: 'Whitaker Music Festival · Summer 2026', whitaker: true,
     gid: '309671', permalink: 'G9ygMm6c3tjyZJxSm8UO', page: '' },
   { title: 'Clyde', artist: 'J.J. Cale', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309660', permalink: 'mw3ENGdZbTeDkPaSoKr7',
