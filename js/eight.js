@@ -1,15 +1,17 @@
 /* ---------- 8-track video data ----------
    Four cartridges. Each real one needs the numbers from the video's Groove "Share & embed" tab:
    gid = the id in the embed code, permalink = the permalink in the embed code, page = the Public URL.
-   An empty slot is just null. To fill slot 3 or 4, replace null with an object like the first two. */
+   An empty slot is just null. To fill the empty slot, replace null with an object like the others.
+   page is optional. whitaker: true marks the video the hero's "Watch the set" link jumps to. */
 var VIDEOS = [
-  { title: 'Clyde', artist: 'J.J. Cale', detail: 'Whitaker Music Festival · Jul 29, 2026',
+  { title: 'Live video', artist: '', detail: '',
+    gid: '309671', permalink: 'G9ygMm6c3tjyZJxSm8UO', page: '' },
+  { title: 'Clyde', artist: 'J.J. Cale', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309660', permalink: 'mw3ENGdZbTeDkPaSoKr7',
     page: 'https://app.groove.cm/groovevideo/videopage/309660/qth0u07a0678f245e3d75881a6179fe3cf2ba' },
   { title: 'Runnin’ Down A Dream', artist: 'Tom Petty', detail: '9 Mile Garden · Aug 22, 2026',
     gid: '309661', permalink: 'iuSS4n0fKJlvUdc6R3u2',
     page: 'https://app.groove.cm/groovevideo/videopage/309661/4pyr76c6ba4adb751ce308c75325f41868cb9' },
-  null,
   null
 ];
 
@@ -68,7 +70,7 @@ var VIDEOS = [
     loadAssets();
     checkT = setTimeout(function () {
       if (cur === i && !w.children.length && !w.shadowRoot) {
-        standby('<b>Player didn’t load</b><span>Open this video on Groove:</span><a href="' + esc(v.page) + '" target="_blank" rel="noopener">' + esc(v.title) + '</a>');
+        standby('<b>Player didn’t load</b>' + (v.page ? '<span>Open this video on Groove:</span><a href="' + esc(v.page) + '" target="_blank" rel="noopener">' + esc(v.title) + '</a>' : '<span>Please try again in a moment</span>'));
       }
     }, 9000);
   }
@@ -90,6 +92,10 @@ var VIDEOS = [
   standby('<b>Insert a cartridge</b><span>Loading the first track</span>');
   paint();
   var started = false;
+  var wl = document.querySelector('.plaque-link');   /* the hero's "Watch the set" link */
+  if (wl) wl.addEventListener('click', function () {
+    for (var i = 0; i < V.length; i++) if (V[i] && V[i].whitaker) { started = true; mount(i); break; }
+  });
   function start() { if (started) return; started = true; for (var i = 0; i < V.length; i++) if (V[i]) { mount(i); break; } }
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); } }, { rootMargin: '500px 0px' });
