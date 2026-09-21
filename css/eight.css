@@ -8,13 +8,18 @@
 .standby b { font: 400 clamp(1.1rem, 3vw, 1.6rem)/1.2 var(--display); letter-spacing: 0.06em; color: var(--platinum); font-weight: 400; }
 .standby a { color: var(--chrome-light); }
 .eight .lcd { min-height: 96px; }
-.eight-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.eight-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; min-height: 0; contain: size; }   /* size containment: the video column sets the height, the program list scrolls inside it */
+.eight-side .cartridges { flex: 1 1 0; min-height: 0; }
 .eight-side .eyebrow { font: 500 0.68rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--chrome); }
 .progrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .lamps { display: flex; align-items: center; gap: 10px; }
 .lamp { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--chrome); background: var(--graphite-2); }
 .lamp.on { background: var(--chrome-light); border-color: var(--chrome-light); box-shadow: 0 0 9px 1px color-mix(in srgb, var(--chrome-light) 55%, transparent); }
-.cartridges { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.cartridges { position: relative; display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 2px 6px 2px 2px; list-style: none; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--chrome) var(--graphite); }
+.cartridges::-webkit-scrollbar { width: 8px; }
+.cartridges::-webkit-scrollbar-track { background: var(--graphite); }
+.cartridges::-webkit-scrollbar-thumb { background: var(--chrome); border-radius: 4px; }
+.cartridge:focus-visible { outline: 2px solid var(--chrome-light); outline-offset: -3px; }
 .cartridge { width: 100%; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 10px 12px; border: 1px solid var(--gunmetal); background: var(--graphite); color: var(--platinum); cursor: pointer; font: inherit; }
 .cartridge .no { display: grid; place-items: center; height: 2.5rem; border: 1px solid var(--chrome); font: 500 0.9rem/1 var(--mono); color: var(--chrome); }
 .cartridge .t { display: block; font: 400 1.02rem/1.25 var(--body); }
@@ -29,6 +34,8 @@
 @media (max-width: 820px) {
   .eight-main { grid-template-columns: minmax(0, 1fr); }
   .eight-side .keys { margin-top: 0; }
+  .eight-side { contain: none; }
+  .eight-side .cartridges { flex: 0 1 auto; max-height: 22rem; }   /* stacked under the video: about four rows, then scroll */
 }
 
 /* link from the hero's Whitaker plaque down to the video */

@@ -48,6 +48,11 @@ var VIDEOS = [
   function paint() {
     rows.forEach(function (r, i) { if (i === cur) r.setAttribute('aria-current', 'true'); else r.removeAttribute('aria-current'); });
     lamps.forEach(function (l, i) { l.classList.toggle('on', i === cur); });
+    if (cur >= 0 && rows[cur]) {   /* keep the playing cartridge visible in the scrolling list (moves the list only, not the page) */
+      var li = rows[cur].parentNode, top = li.offsetTop, bottom = top + li.offsetHeight;
+      if (top < list.scrollTop) list.scrollTop = top;
+      else if (bottom > list.scrollTop + list.clientHeight) list.scrollTop = bottom - list.clientHeight;
+    }
     if (cur < 0) { meta.textContent = 'No cartridge'; title.textContent = 'Pick a track'; sub.textContent = 'Press a cartridge to load it'; return; }
     var v = V[cur];
     meta.textContent = 'Track ' + (cur + 1) + ' of ' + V.length;
@@ -65,6 +70,7 @@ var VIDEOS = [
   function mount(i) {
     var v = V[i]; if (!v) return;
     clearTimeout(checkT);
+    started = true;   /* a chosen cartridge cancels the start-up autoload */
     cur = i; paint();
     screen.innerHTML = '';
     var w = document.createElement('groovevideo-widget');
