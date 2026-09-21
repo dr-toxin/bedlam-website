@@ -9,7 +9,7 @@ var VIDEOS = [
   { title: 'Clyde', artist: 'J.J. Cale', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309660', permalink: 'mw3ENGdZbTeDkPaSoKr7',
     page: 'https://app.groove.cm/groovevideo/videopage/309660/qth0u07a0678f245e3d75881a6179fe3cf2ba' },
-  { title: 'Rainy Day Women #12 & 35', artist: 'Bob Dylan', detail: '',
+  { title: 'Rainy Day Women #12 & 35', artist: 'Bob Dylan', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309672', permalink: '8kxdyR3PYXRHh9jItoiW', page: '' },
   { title: 'Runnin’ Down A Dream', artist: 'Tom Petty', detail: '9 Mile Garden · Aug 22, 2026',
     gid: '309661', permalink: 'iuSS4n0fKJlvUdc6R3u2',
