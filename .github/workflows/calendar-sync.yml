@@ -1,6 +1,8 @@
 name: Sync show dates from the band calendar
 
 # Rewrites data/shows.json from the public Google Calendar. The website reads that file.
+# City and address for each venue come from data/venues.json (edit by hand) and the calendar itself; new
+# venues that had to be looked up are added to data/venues.json and flagged there.
 on:
   schedule:
     - cron: "*/30 * * * *"
@@ -9,6 +11,7 @@ on:
     paths:
       - ".github/workflows/calendar-sync.yml"
       - "scripts/sync_calendar.py"
+      - "data/venues.json"
 
 permissions:
   contents: write
@@ -33,7 +36,7 @@ jobs:
         run: |
           git config user.name "calendar-sync"
           git config user.email "calendar-sync@users.noreply.github.com"
-          git add data/shows.json
+          git add data/shows.json data/venues.json
           if git diff --staged --quiet; then
             echo "No changes to show dates."
           else

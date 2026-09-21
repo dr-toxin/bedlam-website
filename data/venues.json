@@ -1,0 +1,59 @@
+{
+ "_about": "Venues the calendar sync knows about. Edit freely: what is here always wins over the calendar. name and aliases are the ways a venue is spelled in calendar titles. city must look like \"St. Louis, MO\". address and website are optional. verified false = looked up by machine (or unsure), please check, then set true.",
+ "venues": [
+  {
+   "name": "Concordia Turners",
+   "aliases": [
+    "Turners Hall Oktoberfest",
+    "Turners Hall",
+    "Turner's Octoberfest",
+    "Oktoberfest Turner Hall",
+    "Concordia Turners Oktoberfest"
+   ],
+   "city": "St. Louis, MO",
+   "address": "6432 Gravois Ave, St. Louis, MO 63116",
+   "website": "https://www.concordiaturners.org",
+   "verified": true
+  },
+  {
+   "name": "Flock",
+   "aliases": [
+    "Flock Food Truck",
+    "Flock Food Truck Park"
+   ],
+   "city": "Alton, IL",
+   "address": "210 Ridge St, Alton, IL 62002",
+   "website": "https://flockalton.com",
+   "verified": true
+  },
+  {
+   "name": "Kirkwood Night Market",
+   "aliases": [
+    "Night Market on Argonne"
+   ],
+   "city": "Kirkwood, MO",
+   "address": "150 E Argonne Ave, Kirkwood, MO 63122",
+   "website": "https://www.downtownkirkwood.com/events/moonlight-market",
+   "verified": true
+  },
+  {
+   "name": "Bench Racers",
+   "aliases": [],
+   "city": "St. Charles, MO",
+   "address": "1801 N 2nd St, St. Charles, MO 63301",
+   "website": "",
+   "verified": true
+  },
+  {
+   "name": "Club Atmos",
+   "aliases": [
+    "Atmos"
+   ],
+   "city": "Kirkwood, MO",
+   "address": "",
+   "website": "",
+   "verified": false,
+   "note": "city from web search (a private club in downtown Kirkwood); street address not found, please confirm"
+  }
+ ]
+}
