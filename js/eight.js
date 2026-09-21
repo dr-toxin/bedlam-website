@@ -1,7 +1,7 @@
 /* ---------- 8-track video data ----------
-   Four cartridges. Each real one needs the numbers from the video's Groove "Share & embed" tab:
+   One cartridge per video (four fill the panel neatly, and more work too). Each one needs the numbers from the video's Groove "Share & embed" tab:
    gid = the id in the embed code, permalink = the permalink in the embed code, page = the Public URL.
-   An empty slot is just null. To fill the empty slot, replace null with an object like the others.
+   An empty slot is just null. To add a video, add an object like the others (or replace a null).
    page is optional. whitaker: true marks the video the hero's "Watch the set" link jumps to. */
 var VIDEOS = [
   { title: 'Big River', artist: 'Johnny Cash', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
@@ -9,10 +9,11 @@ var VIDEOS = [
   { title: 'Clyde', artist: 'J.J. Cale', detail: 'Whitaker Music Festival · Jul 29, 2026', whitaker: true,
     gid: '309660', permalink: 'mw3ENGdZbTeDkPaSoKr7',
     page: 'https://app.groove.cm/groovevideo/videopage/309660/qth0u07a0678f245e3d75881a6179fe3cf2ba' },
+  { title: 'Rainy Day Women #12 & 35', artist: 'Bob Dylan', detail: '',
+    gid: '309672', permalink: '8kxdyR3PYXRHh9jItoiW', page: '' },
   { title: 'Runnin’ Down A Dream', artist: 'Tom Petty', detail: '9 Mile Garden · Aug 22, 2026',
     gid: '309661', permalink: 'iuSS4n0fKJlvUdc6R3u2',
-    page: 'https://app.groove.cm/groovevideo/videopage/309661/4pyr76c6ba4adb751ce308c75325f41868cb9' },
-  null
+    page: 'https://app.groove.cm/groovevideo/videopage/309661/4pyr76c6ba4adb751ce308c75325f41868cb9' }
 ];
 
 /* ---------- 8-track video player ---------- */
