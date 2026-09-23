@@ -54,6 +54,15 @@
    "website": "",
    "verified": false,
    "note": "city from web search (a private club in downtown Kirkwood); street address not found, please confirm"
+  },
+  {
+   "name": "Syberg’s (Gravois)",
+   "aliases": [],
+   "city": "",
+   "address": "",
+   "website": "",
+   "verified": false,
+   "note": "lookup found nothing, please fill in"
   }
  ]
 }
