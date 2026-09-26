@@ -1,18 +1,7 @@
 {
- "updated": "2026-09-24T18:04:04-05:00",
+ "updated": "2026-09-26T00:18:25-05:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-09-25T19:00:00-05:00",
-   "allDay": false,
-   "venue": "Bloody Bucket Saloon",
-   "city": "",
-   "address": "",
-   "website": "",
-   "lineup": "Duo",
-   "url": "",
-   "title": "Bedlam duo at Bloody Bucket Saloon"
-  },
   {
    "start": "2026-09-26T17:30:00-05:00",
    "allDay": false,
