@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-27T17:28:11-05:00",
+ "updated": "2026-10-09T09:11:32-05:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -34,6 +34,17 @@
    "lineup": "Full band",
    "url": "",
    "title": "Bedlam at Kirkwood night market"
+  },
+  {
+   "start": "2026-10-17T19:00:00-05:00",
+   "allDay": false,
+   "venue": "Das Bevo",
+   "city": "St. Louis, MO",
+   "address": "4749 Gravois Ave, St. Louis, MO 63116",
+   "website": "",
+   "lineup": "Full band",
+   "url": "",
+   "title": "Bedlam at Das Bevo"
   },
   {
    "start": "2026-10-23T19:00:00-05:00",
