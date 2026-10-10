@@ -1,18 +1,7 @@
 {
- "updated": "2026-10-09T09:11:32-05:00",
+ "updated": "2026-10-09T23:48:52-05:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-10-09T18:00:00-05:00",
-   "allDay": false,
-   "venue": "Flock",
-   "city": "Alton, IL",
-   "address": "210 Ridge St, Alton, IL 62002",
-   "website": "https://flockalton.com",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Flock"
-  },
   {
    "start": "2026-10-10T13:00:00-05:00",
    "allDay": false,
