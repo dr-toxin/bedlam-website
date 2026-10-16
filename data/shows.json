@@ -1,18 +1,7 @@
 {
- "updated": "2026-10-10T18:43:42-05:00",
+ "updated": "2026-10-16T01:11:02-05:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-10-15T17:00:00-05:00",
-   "allDay": false,
-   "venue": "Kirkwood Night Market",
-   "city": "Kirkwood, MO",
-   "address": "150 E Argonne Ave, Kirkwood, MO 63122",
-   "website": "https://www.downtownkirkwood.com/events/moonlight-market",
-   "lineup": "Full band",
-   "url": "",
-   "title": "Bedlam at Kirkwood night market"
-  },
   {
    "start": "2026-10-17T19:00:00-05:00",
    "allDay": false,
