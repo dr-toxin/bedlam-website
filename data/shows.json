@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T03:43:04-05:00",
+ "updated": "2026-10-27T15:28:36-05:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -45,6 +45,17 @@
    "lineup": "Duo",
    "url": "",
    "title": "Bedlam Duo @Club Atmos"
+  },
+  {
+   "start": "2027-02-13T13:00:00-06:00",
+   "allDay": false,
+   "venue": "Defiance Ridge Vineyards",
+   "city": "Defiance, MO",
+   "address": "2711 S Highway 94, Defiance, MO 63341",
+   "website": "",
+   "lineup": "Full band",
+   "url": "",
+   "title": "Bedlam (full band) at Defiance Ridge"
   }
  ]
 }
