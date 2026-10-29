@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T15:28:36-05:00",
+ "updated": "2026-10-29T15:28:53-05:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -14,7 +14,7 @@
    "title": "Bedlam at Montelle Winery"
   },
   {
-   "start": "2026-11-07T17:00:00-06:00",
+   "start": "2026-11-07T16:00:00-06:00",
    "allDay": false,
    "venue": "Bench Racers",
    "city": "St. Charles, MO",
@@ -23,6 +23,17 @@
    "lineup": "Full band",
    "url": "",
    "title": "Bedlam at Bench Racers"
+  },
+  {
+   "start": "2026-11-20T19:00:00-06:00",
+   "allDay": false,
+   "venue": "The Mexican STL",
+   "city": "Crestwood, MO",
+   "address": "Watson Road, Crestwood, MO 63126",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam Duo at The Mexican STL"
   },
   {
    "start": "2026-11-21T18:00:00-06:00",

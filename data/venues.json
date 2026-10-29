@@ -72,6 +72,15 @@
    "website": "",
    "verified": false,
    "note": "lookup found nothing, please fill in"
+  },
+  {
+   "name": "The Mexican STL",
+   "aliases": [],
+   "city": "Crestwood, MO",
+   "address": "Watson Road, Crestwood, MO 63126",
+   "website": "",
+   "verified": false,
+   "note": "found by OpenStreetMap lookup, please check"
   }
  ]
 }
