@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T15:28:53-05:00",
+ "updated": "2026-10-29T19:12:46-05:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -12,6 +12,17 @@
    "lineup": "Full band",
    "url": "",
    "title": "Bedlam at Montelle Winery"
+  },
+  {
+   "start": "2026-11-06T19:00:00-06:00",
+   "allDay": false,
+   "venue": "Syberg’s (Gravois)",
+   "city": "",
+   "address": "",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam duo at Syberg’s (Gravois)"
   },
   {
    "start": "2026-11-07T16:00:00-06:00",
