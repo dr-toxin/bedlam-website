@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T14:17:53-06:00",
+ "updated": "2026-11-02T16:25:52-06:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -45,6 +45,17 @@
    "lineup": "Duo",
    "url": "",
    "title": "Bedlam duo at Barrel House"
+  },
+  {
+   "start": "2026-11-28T18:00:00-06:00",
+   "allDay": false,
+   "venue": "Bennie's Pizza Pub",
+   "city": "Belleville, IL",
+   "address": "113 E Main St, Belleville, IL 62220",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam Duo at Bennie"
   },
   {
    "start": "2026-12-05T18:00:00-06:00",
