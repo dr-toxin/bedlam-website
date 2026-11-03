@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T16:25:52-06:00",
+ "updated": "2026-11-02T21:38:38-06:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -56,6 +56,17 @@
    "lineup": "Duo",
    "url": "",
    "title": "Bedlam Duo at Bennie"
+  },
+  {
+   "start": "2026-12-03T18:00:00-06:00",
+   "allDay": false,
+   "venue": "Bedlam Duo Tower Grove Beer Garden",
+   "city": "",
+   "address": "",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam duo Tower Grove Beer Garden"
   },
   {
    "start": "2026-12-05T18:00:00-06:00",

@@ -81,6 +81,15 @@
    "website": "",
    "verified": false,
    "note": "found by OpenStreetMap lookup, please check"
+  },
+  {
+   "name": "Bedlam Duo Tower Grove Beer Garden",
+   "aliases": [],
+   "city": "",
+   "address": "",
+   "website": "",
+   "verified": false,
+   "note": "lookup found nothing, please fill in"
   }
  ]
 }
