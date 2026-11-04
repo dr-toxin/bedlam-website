@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T21:38:38-06:00",
+ "updated": "2026-11-04T15:26:03-06:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -89,6 +89,17 @@
    "lineup": "Full band",
    "url": "",
    "title": "Bedlam (full band) at Defiance Ridge"
+  },
+  {
+   "start": "2027-02-27T19:00:00-06:00",
+   "allDay": false,
+   "venue": "Friendship Brewing Company",
+   "city": "Wentzville, MO",
+   "address": "400 Crossroads Business Park Ct, Wentzville, MO 63385",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam duo Frienship Brewing Co."
   }
  ]
 }
