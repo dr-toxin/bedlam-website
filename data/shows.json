@@ -1,18 +1,7 @@
 {
- "updated": "2026-11-06T17:42:12-06:00",
+ "updated": "2026-11-06T23:01:35-06:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-11-06T19:00:00-06:00",
-   "allDay": false,
-   "venue": "Syberg’s (Gravois)",
-   "city": "",
-   "address": "",
-   "website": "",
-   "lineup": "Duo",
-   "url": "",
-   "title": "Bedlam duo at Syberg’s (Gravois)"
-  },
   {
    "start": "2026-11-07T14:00:00-06:00",
    "allDay": false,
