@@ -90,6 +90,15 @@
    "website": "",
    "verified": false,
    "note": "lookup found nothing, please fill in"
+  },
+  {
+   "name": "Irish Gypsy",
+   "aliases": [],
+   "city": "O’Fallon, MO",
+   "address": "1250 Bryan Road, O’Fallon, MO 63366",
+   "website": "",
+   "verified": false,
+   "note": "found by OpenStreetMap lookup, please check"
   }
  ]
 }

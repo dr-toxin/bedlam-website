@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T13:55:13-06:00",
+ "updated": "2026-11-13T19:59:52-06:00",
  "timezone": "America/Chicago",
  "shows": [
   {
@@ -56,6 +56,17 @@
    "lineup": "Duo",
    "url": "",
    "title": "Bedlam Duo @Club Atmos"
+  },
+  {
+   "start": "2027-02-05T19:00:00-06:00",
+   "allDay": false,
+   "venue": "Irish Gypsy",
+   "city": "O’Fallon, MO",
+   "address": "1250 Bryan Road, O’Fallon, MO 63366",
+   "website": "",
+   "lineup": "Duo",
+   "url": "",
+   "title": "Bedlam duo at Irish Gypsy"
   },
   {
    "start": "2027-02-13T13:00:00-06:00",
