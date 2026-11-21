@@ -1,18 +1,7 @@
 {
- "updated": "2026-11-13T19:59:52-06:00",
+ "updated": "2026-11-21T04:43:56-06:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-11-20T17:00:00-06:00",
-   "allDay": false,
-   "venue": "The Mexican STL",
-   "city": "Crestwood, MO",
-   "address": "Watson Road, Crestwood, MO 63126",
-   "website": "",
-   "lineup": "Duo",
-   "url": "",
-   "title": "Bedlam Duo at The Mexican STL"
-  },
   {
    "start": "2026-11-21T18:00:00-06:00",
    "allDay": false,
