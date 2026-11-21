@@ -99,6 +99,15 @@
    "website": "",
    "verified": false,
    "note": "found by OpenStreetMap lookup, please check"
+  },
+  {
+   "name": "Bedlam Duo Rockwell Brewing Snowcial",
+   "aliases": [],
+   "city": "",
+   "address": "",
+   "website": "",
+   "verified": false,
+   "note": "lookup found nothing, please fill in"
   }
  ]
 }
