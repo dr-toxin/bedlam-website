@@ -1,18 +1,7 @@
 {
- "updated": "2026-11-21T16:52:18-06:00",
+ "updated": "2026-11-22T04:49:57-06:00",
  "timezone": "America/Chicago",
  "shows": [
-  {
-   "start": "2026-11-21T18:00:00-06:00",
-   "allDay": false,
-   "venue": "Barrel House",
-   "city": "Ballwin, MO",
-   "address": "14748 Clayton Rd, Ballwin, MO 63011",
-   "website": "",
-   "lineup": "Duo",
-   "url": "",
-   "title": "Bedlam duo at Barrel House"
-  },
   {
    "start": "2026-11-28T18:00:00-06:00",
    "allDay": false,
